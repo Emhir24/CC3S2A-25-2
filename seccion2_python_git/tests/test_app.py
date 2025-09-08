@@ -17,3 +17,4 @@ def test_summarize_error_no_numerico():
     # Si hay un valor no convertible a número, debe salir ValueError
     with pytest.raises(ValueError):
         summarize(["1", "x"])
+# Nota: fix menor (comentario para cherry-pick)
