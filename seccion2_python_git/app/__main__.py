@@ -23,3 +23,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+# Nota: salida formateada de CLI (sum, avg, count)
