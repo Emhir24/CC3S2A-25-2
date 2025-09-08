@@ -1,0 +1,6 @@
+* 8f84e67 (HEAD -> main) fix: comentario menor en test (typo)
+| * ee2de48 (hotfix/tests-typo) fix: comentario menor en test (typo)
+|/  
+* 91e0ddb (feature/docs-readme) docs: notas de ejecución (WSL y pytest)
+* d5425e5 (feature/summarize-cli) feature: comentario sobre salida del CLI
+* 515ab78 Estructura inicial (Sección 1, 2 y 3)
