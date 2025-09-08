@@ -1,0 +1,14 @@
+curl -I example.com
+HTTP/2 200 
+content-type: text/html
+etag: "84238dfc8092e5d9c0dac8ef93371a07:1736799080.121134"
+last-modified: Mon, 13 Jan 2025 20:11:20 GMT
+cache-control: max-age=86000
+date: Sun, 07 Sep 2025 23:54:10 GMT
+alt-svc: h3=":443"; ma=93600,h3-29=":443"; ma=93600
+
+
+Explicación : El código de respuesta HTTP 200 determina que la solicitud fue correcta y el servidor contestó sin problemas.
+Los códigos 3xx nos dan redirecciones, los códigos 4xx son indicativos de errores del cliente (por ejemplo, recurso no encontrado)
+y los códigos 5xx son errores del servidor.
+Estos códigos permiten identificar errores y comprobar el estado del servicio.

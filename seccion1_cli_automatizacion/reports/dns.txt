@@ -1,0 +1,20 @@
+A
+example.com.		294	IN	A	23.192.228.80
+example.com.		294	IN	A	23.192.228.84
+example.com.		294	IN	A	23.215.0.136
+example.com.		294	IN	A	23.215.0.138
+example.com.		294	IN	A	23.220.75.232
+example.com.		294	IN	A	23.220.75.245
+AAAA
+example.com.		223	IN	AAAA	2600:1406:5e00:6::17ce:bc12
+example.com.		223	IN	AAAA	2600:1406:5e00:6::17ce:bc1b
+example.com.		223	IN	AAAA	2600:1406:bc00:53::b81e:94c8
+example.com.		223	IN	AAAA	2600:1406:bc00:53::b81e:94ce
+example.com.		223	IN	AAAA	2600:1408:ec00:36::1736:7f24
+example.com.		223	IN	AAAA	2600:1408:ec00:36::1736:7f31
+MX
+example.com.		85612	IN	MX	0 .
+
+Nota : Nota: El valor TTL señala durante cuánto tiempo un registro DNS puede almacenarse en caché, de esta manera, 
+un TTL alto logrará que cualquier cambio  tarde más en realizarse, al contrario que un TTL bajo permitirá que los cambios 
+se puedan realizar rápidamente, pero a costa de realizar más consultas a los servidores DNS.
