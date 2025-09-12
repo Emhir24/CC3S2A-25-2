@@ -106,3 +106,22 @@ No basta con cumplir checklist. Dos señales de eficacia que sí miden impacto r
 
 Estas métricas se pueden obtener comparando reportes de SAST/DAST y revisando los commits de corrección.
 
+## 4.5 CI/CD y estrategias de despliegue
+Cuando se trata de un servicio clave como el de inicio de sesión, no conviene arriesgarse a desplegar todo de golpe.  
+Por eso, una buena práctica es usar el método canario, que consiste en liberar la nueva versión solo a una parte pequeña de los usuarios.  
+Si la versión es estable, se amplía el alcance hasta cubrir al 100%. Si aparecen fallos, se revierte rápido y la mayoría de usuarios nunca lo nota.
+
+**Riesgos que pueden surgir y cómo se controlan:**
+- **Errores en funciones básicas:** antes de enviar a todos, se validan contratos de API y pruebas de integración.  
+- **Mayor costo en infraestructura:** mantener dos versiones en paralelo solo por un tiempo corto para evitar gastos innecesarios.  
+- **Sesiones interrumpidas:** aplicar *drain connections* y cuidar que los cambios de base de datos sean compatibles.
+
+**Indicadores para decidir si avanzar o no:**
+- **KPI técnico:** porcentaje de respuestas 5xx ≤ 0.1% en la primera hora del despliegue.  
+- **KPI de producto:** tasa de conversión (ejemplo: usuarios que completan registro) no debe bajar más del 5% respecto al promedio anterior.
+
+**Comentario:**  
+Es importante mirar tanto lo técnico como lo funcional. Puede pasar que el sistema no marque errores 5xx, pero que los usuarios abandonen el flujo porque algo cambió en la interfaz o en la lógica.  
+Por eso ambos tipos de métricas deben coexistir al momento de tomar la decisión.
+
+![Pipeline Canary](imagenes/pipeline_canary.png)
