@@ -28,3 +28,27 @@ Se configuró el archivo `hosts` para resolver `miapp.local` hacia `127.0.0.1`. 
 #### 7. Verificación general
 Se integraron pruebas de **hosts, DNS, HTTP y puertos** en una sola ejecución, confirmando la resolución correcta y la respuesta de la aplicación.  
 ![Verificación general](imagenes/verificacion_general.png)
+
+## Respuestas a Preguntas Guía
+
+### 1. HTTP: Idempotencia de métodos y su impacto
+Los métodos como `GET` son idempotentes porque se pueden repetir varias veces sin modificar el estado del servidor.  
+En cambio, `POST` no es idempotente, ya que podría crear o modificar recursos en cada ejecución.  
+
+En las pruebas se verificó que el `GET` devuelve siempre el mismo JSON (`message`, `release`) y que el `POST` devuelve `405 Method Not Allowed` porque la ruta solo estaba configurada para `GET`.  
+Esto asegura que las verificaciones de salud y los reintentos de clientes no generan cambios no deseados.
+
+### 2. DNS: Uso de `/etc/hosts` vs. zona autoritativa
+El archivo `hosts` en la máquina local es útil en entornos de laboratorio porque permite simular nombres de dominio (`miapp.local → 127.0.0.1`) sin necesidad de un DNS real.  
+En producción no se usa porque no escala y no tiene mecanismos de propagación ni TTL.  
+
+Una zona DNS autoritativa define registros que se distribuyen globalmente y respetan políticas de caché y TTL, lo que asegura disponibilidad y consistencia.
+
+### 3. TLS: Rol del SNI en el handshake
+El **Server Name Indication (SNI)** permite que, durante el handshake TLS, el cliente indique a qué dominio se quiere conectar.  
+Esto es clave cuando un mismo servidor aloja múltiples certificados.  
+
+En la práctica se validó con:
+
+```bash
+openssl s_client -connect miapp.local:443 -servername miapp.local -brief
