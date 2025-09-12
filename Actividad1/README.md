@@ -51,3 +51,29 @@ Al no haber comunicación constante, cada grupo avanzaba por su cuenta como si e
 Este modelo crea muchos *handoffs* (pases entre equipos) con pérdida de información. El resultado son tiempos más largos para resolver incidentes (**MTTR**) y repeticiones de los mismos problemas en distintos despliegues.
 
 ![Silos organizacionales](imagenes/silos-equipos.png)
+
+
+## 4.3 Principios y beneficios de DevOps (CI/CD, Agile, colaboración)
+
+El corazón de DevOps está en la integración continua (CI) y la entrega continua (CD).  
+En lugar de esperar semanas para juntar cambios grandes, se trabaja con modificaciones pequeñas que se integran y prueban casi de inmediato. Esto ayuda a detectar errores cerca del código original y facilita la colaboración entre equipos.
+
+**Puntos clave de CI/CD:**
+Cambios chicos y frecuentes en vez de grandes lotes.  
+Pruebas automatizadas que corren apenas se sube el código.  
+Un pipeline que promueve o bloquea el paso de versiones según los resultados.  
+
+**Relación con Agile:**  
+Prácticas ágiles como las reuniones diarias o las retrospectivas ayudan a que Dev y Ops tomen decisiones rápidas sobre el pipeline.  
+Por ejemplo: en una retro se puede acordar que cierto tipo de errores ya no se pasen de pruebas a producción. De esa forma, Agile y DevOps se refuerzan mutuamente.
+
+**Indicador de colaboración (ejemplo no financiero):**  
+*Tiempo desde que un pull request está listo hasta que se despliega en el entorno de pruebas.*  
+
+Si tarda mucho, significa que la comunicación entre Dev y Ops no es fluida.  
+Si se mantiene corto, quiere decir que hay coordinación real.  
+
+**Cómo medirlo sin herramientas caras:**  
+Revisar los registros de PRs en GitHub o GitLab.  
+Mirar los logs de despliegue en el servidor.  
+Llevar una bitácora manual con las horas de aprobación y despliegue.
