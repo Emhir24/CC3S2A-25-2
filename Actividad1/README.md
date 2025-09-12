@@ -129,8 +129,11 @@ Por eso ambos tipos de métricas deben coexistir al momento de tomar la decisió
 ### 4.6 Fundamentos prácticos 
 ### 1. HTTP – contrato observable
 Para esta evidencia revisé una petición HTTP en GitHub usando las DevTools del navegador.  
-En la captura se observa:
+
 ![HTTP evidencia](imagenes/http-evidencia.png)
+
+
+En la captura se observa:
 
 **Método:** GET  
 **Código de estado:** 200 OK  
@@ -139,3 +142,18 @@ En la captura se observa:
 
 **Interpretación:**  
 Estas cabeceras muestran un balance entre consistencia y rendimiento: aunque se fuerza a revalidar (menos caché), la compresión mantiene la respuesta rápida y ligera. Esto da trazabilidad y control sobre la entrega de contenido.
+
+### 2. DNS – registro y TTL
+Consulté el dominio **github.com** para revisar su resolución DNS.  
+![DNS TTL](imagenes/dns-ttl.png)
+
+
+En la evidencia (`imagenes/dns-ttl.png`) se observa:
+- **Registro:** A  
+- **Dirección IP:** 140.82.114.3  
+- **TTL:** 60 segundos
+
+**Interpretación:**  
+El TTL de 60s indica que los clientes solo guardan la respuesta en caché por un minuto.  
+Esto permite reaccionar rápido a cambios (como un rollback de despliegue), pero aumenta la carga en servidores DNS.  
+Un TTL más largo sería útil para dominios muy estables, reduciendo tráfico de consultas.
