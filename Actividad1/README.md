@@ -125,3 +125,16 @@ Es importante mirar tanto lo técnico como lo funcional. Puede pasar que el sist
 Por eso ambos tipos de métricas deben coexistir al momento de tomar la decisión.
 
 ![Pipeline Canary](imagenes/pipeline_canary.png)
+
+### 4.6 Fundamentos prácticos 
+### 1. HTTP – contrato observable
+Para esta evidencia revisé una petición HTTP en GitHub usando las DevTools del navegador.  
+En la captura (`imagenes/http-evidencia.png`) se observa:
+
+**Método:** GET  
+**Código de estado:** 200 OK  
+**Cabecera 1:** `Cache-Control: no-cache` → obliga al cliente a validar siempre con el servidor, lo que asegura información actualizada pero puede aumentar la carga.  
+**Cabecera 2:** `Accept-Encoding: gzip, deflate, br, zstd` → habilita compresión en la respuesta, optimizando el uso de red y reduciendo tiempos de carga.
+
+**Interpretación:**  
+Estas cabeceras muestran un balance entre consistencia y rendimiento: aunque se fuerza a revalidar (menos caché), la compresión mantiene la respuesta rápida y ligera. Esto da trazabilidad y control sobre la entrega de contenido.
