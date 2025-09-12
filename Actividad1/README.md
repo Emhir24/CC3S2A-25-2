@@ -68,7 +68,7 @@ Prácticas ágiles como las reuniones diarias o las retrospectivas ayudan a que 
 Por ejemplo: en una retro se puede acordar que cierto tipo de errores ya no se pasen de pruebas a producción. De esa forma, Agile y DevOps se refuerzan mutuamente.
 
 **Indicador de colaboración (ejemplo no financiero):**  
-*Tiempo desde que un pull request está listo hasta que se despliega en el entorno de pruebas.*  
+Tiempo desde que un pull request está listo hasta que se despliega en el entorno de pruebas.*  
 Si tarda mucho, significa que la comunicación entre Dev y Ops no es fluida.  
 Si se mantiene corto, quiere decir que hay coordinación real.  
 
@@ -83,7 +83,8 @@ El paso de DevOps a DevSecOps significa que la seguridad ya no se revisa al fina
 Se aplican pruebas estáticas y dinámicas que permiten encontrar fallas antes de que el software llegue a producción.
 
 **Tipos de análisis:**
-**SAST (Static Application Security Testing):** revisa el código fuente o los binarios *antes de ejecutar*. Sirve para detectar inyecciones, malas prácticas o uso de librerías vulnerables.  
+
+**SAST (Static Application Security Testing):** revisa el código fuente o los binarios antes de ejecutar. Sirve para detectar inyecciones, malas prácticas o uso de librerías vulnerables.  
 **DAST (Dynamic Application Security Testing):** analiza la aplicación *en ejecución*, simulando ataques reales (por ejemplo, XSS o SQL Injection).
 
 **Gate mínimo de seguridad (umbrales propuestos):**
