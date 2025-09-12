@@ -195,4 +195,97 @@ El hecho de que estos puertos estén en LISTENING significa que el sistema está
 Si un puerto esperado no aparece, podría indicar que un servicio no inició correctamente; mientras que tener puertos innecesarios abiertos puede representar un riesgo de seguridad.  
 Por eso es importante revisar periódicamente el estado de los puertos y deshabilitar aquellos que no sean esenciales para reducir la exposición del sistema.
 
+### 4.6 Fundamentos prácticos — Principios 12-Factor
+
+Los principios 12-Factor sirven como guía para construir aplicaciones listas para la nube. A continuación, relaciono algunos con lo que pude observar en las evidencias (HTTP, DNS, TLS y puertos):
+
+**Port binding:** en la evidencia de puertos vimos que el sistema expone servicios como HTTP (80) y HTTPS (443). En una aplicación 12-Factor el puerto no debería estar fijo en el código, sino definido como variable de entorno (ejemplo: `PORT=8080`). Esto permite ejecutar la misma aplicación en distintos entornos sin tener que modificar el código fuente.  
+
+- **Configuración externa:** parámetros sensibles como contraseñas, claves o endpoints no deben ir incrustados en el código ni en los repositorios. Lo correcto es gestionarlos fuera, en archivos de configuración o sistemas de variables de entorno. De esa forma, al cambiar de desarrollo a producción no hay riesgo de exponer secretos.  
+
+- **Logs como flujo:** en lugar de guardar logs en archivos locales (que pueden perderse o rotarse manualmente), los 12-Factor recomiendan enviarlos a la salida estándar. Esto facilita centralizar registros en sistemas de monitoreo y detectar problemas como los errores 5xx o fallos de TLS que vimos antes.  
+
+**Entornos replicables:** el mismo conjunto de dependencias debe existir en desarrollo, pruebas y producción. Así se evitan sorpresas como “funciona en mi máquina pero no en producción”. Los diagnósticos de HTTP, DNS y TLS sirven precisamente para comprobar que los entornos son consistentes.  
+
+**Procesos independientes:** cada servicio corre como un proceso aislado. Esto se refleja en los puertos: cada aplicación escucha en el suyo. Si un puerto esperado no está en LISTENING, significa que el proceso no se levantó correctamente.  
+
+**Interpretación:**  
+La idea de aplicar los 12-Factor es lograr aplicaciones más portables, escalables y seguras. En la práctica, ayudan a que los despliegues sean reproducibles: mismo código, misma configuración por entorno y mismos logs accesibles. Eso reduce la posibilidad de errores y simplifica la detección de incidentes.
+
+
+## 4.7 Desafíos de DevOps y mitigaciones
+
+![Desafíos de DevOps](imagenes/desafios_devops.png)
+
+Al aplicar DevOps en proyectos reales aparecen distintos desafíos:
+
+**Culturales:**  
+- Resistencia al cambio: equipos acostumbrados al modelo tradicional pueden ver DevOps como más trabajo.  
+- Comunicación débil entre Dev y Ops.  
+
+**Técnicos:**  
+- Falta de automatización en pruebas y despliegues.  
+- Dificultad para integrar herramientas distintas (repos, CI/CD, monitoreo).  
+
+**De gobernanza:**  
+- Ausencia de políticas claras para excepciones de seguridad.  
+- Dudas sobre responsabilidades cuando ocurre un incidente.
+
+### Riesgos y mitigaciones
+
+- **Rollback difícil:** si se despliega todo de golpe y falla, el tiempo de recuperación es alto.  
+*Mitigación:* usar despliegues graduales o canarios con rollback automatizado.  
+
+- **Blast radius amplio (impacto grande de un fallo):** un bug puede afectar a todos los usuarios.  
+*Mitigación:* limitar el porcentaje de usuarios expuestos en cada fase del despliegue.  
+
+- **Falta de revisión cruzada:** cambios entran a producción sin que otro equipo los valide.  
+*Mitigación:* obligatoriedad de code review antes de mergear a main.  
+
+### Experimento controlado
+
+Para demostrar que el despliegue gradual reduce riesgos frente a un despliegue “big bang” se podría:
+
+- **Métrica primaria:** tasa de errores 5xx en usuarios finales.  
+- **Grupo control:** 100% de usuarios reciben la nueva versión de golpe.  
+- **Grupo experimental:** 10% de usuarios reciben la versión nueva en modo canario, y si es estable se amplía.  
+- **Criterio de éxito:** que el grupo experimental presente menos incidentes críticos y tiempos de recuperación más cortos.  
+- **Plan de reversión:** si los errores superan el umbral definido (ej. 0.1% de respuestas 5xx), se corta el despliegue y se revierte a la versión anterior.
+
+## 4.8 Arquitectura mínima
+
+Para que una aplicación funcione de forma segura y sencilla bajo un enfoque DevSecOps, se puede pensar en una arquitectura mínima con las siguientes piezas:
+
+**1. Cliente:**  
+El punto de partida es el navegador o la app del usuario. Desde aquí salen las peticiones hacia el sistema.
+
+**2. Resolución de nombre (DNS):**  
+Traduce el dominio (por ejemplo, *github.com*) a la dirección IP real. Es importante usar configuraciones como TTL adecuados y, si se puede, DNSSEC para evitar respuestas falsas.
+
+**3. Capa de transporte (HTTP + TLS):**  
+Aquí se valida que la conexión sea segura. El protocolo HTTPS cifra la información y el certificado TLS garantiza que estamos hablando con el servidor correcto.
+
+**4. Servicios en backend:**  
+Son las aplicaciones que procesan las solicitudes. Además de la lógica de negocio, incluyen validaciones de seguridad, control de accesos y manejo de errores.
+
+### Principios aplicados
+- **Separación de configuración:** no poner contraseñas ni direcciones fijas en el código, sino en variables de entorno.  
+- **Registros como flujo:** enviar los logs a un sistema central para detectar fallos rápido.  
+- **Entornos consistentes:** que desarrollo, pruebas y producción tengan la misma configuración para evitar “funciona en mi máquina pero no en el server”.
+
+### Beneficios
+- **Defensa en varias capas:** si falla un punto (ej. DNS), TLS y backend aún ayudan a proteger.  
+- **Despliegues más ordenados:** al replicar la misma estructura en todos los entornos se evitan sorpresas.  
+- **Observabilidad:** gracias a los logs y métricas se puede saber qué pasa en cada capa sin depender solo de los usuarios para reportar errores.
+![Arq Minima](imagenes/arquitectura_minima.png)
+## 4.9 Tabla de evidencias
+
+| Evidencia              | Descripción breve                                                                 |
+|-------------------------|----------------------------------------------------------------------------------|
+| `http-evidencia.png`     | Captura de DevTools mostrando cabeceras HTTP y contrato observable.              |
+| `dns-ttl.png`        | Resultado de consulta DNS (`nslookup`) con dirección IP resuelta y TTL asociado. |
+| `tls_cert.png`          | Certificado TLS de github.com, con CN, emisor y fechas de validez.               |
+| `ejecucion.png`   | Listado de puertos en estado LISTENING obtenidos con `netstat`.                  |
+| `arquitectura_minima.png` | Diagrama de arquitectura mínima con cliente, DNS, TLS y backend.                 |
+
 
