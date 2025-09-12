@@ -129,7 +129,8 @@ Por eso ambos tipos de métricas deben coexistir al momento de tomar la decisió
 ### 4.6 Fundamentos prácticos 
 ### 1. HTTP – contrato observable
 Para esta evidencia revisé una petición HTTP en GitHub usando las DevTools del navegador.  
-En la captura (`imagenes/http-evidencia.png`) se observa:
+En la captura se observa:
+![HTTP evidencia](imagenes/http-evidencia.png)
 
 **Método:** GET  
 **Código de estado:** 200 OK  
