@@ -1,6 +1,6 @@
 # Actividad 1: Introducción a DevOps y DevSecOps  
 
-**Estudiante:** Emhir Rodríguez (Enrro24)  
+**Estudiante:** Emhir Rodríguez 
 **Fecha:** 11/09/2025  
 **Tiempo total invertido:** 00:00  
 
@@ -11,22 +11,19 @@ El trabajo lo realicé en mi laptop con Windows 10, usando Visual Studio Code y 
 Para las evidencias utilicé herramientas básicas como DevTools (HTTP/TLS), nslookup (DNS) y netstat (puertos).  
   
 ## 4.1 DevOps vs Cascada tradicional  
-
-![Comparativa DevOps vs Cascada](imagenes/devops-vs-cascada.png)
-
 **Explicación breve:**  
-El modelo en **cascada** sigue fases lineales: primero requisitos, luego diseño, después implementación, pruebas y recién al final despliegue.  
+**cascada**: Este modelo sigue fases lineales; primero requisitos, luego diseño, después implementación, pruebas y recién al final despliegue.  
 Funciona cuando los requisitos son estables, pero el problema es que el feedback llega tarde y corregir errores al final suele ser caro y lento.  
 
-En cambio, **DevOps** busca trabajar en ciclos más cortos y repetitivos. Se apoya en integración y despliegue continuo (CI/CD), pruebas automatizadas y colaboración entre desarrollo y operaciones. Esto permite detectar fallos antes, entregar más rápido y adaptarse mejor a los cambios.  
+**DevOps**:Busca trabajar en ciclos más cortos y repetitivos. Se apoya en integración y despliegue continuo (CI/CD), pruebas automatizadas y colaboración entre desarrollo y operaciones. Esto permite detectar fallos antes, entregar más rápido y adaptarse mejor a los cambios.  
 
 **Situaciones donde cascada todavía se usa:**  
-1. Proyectos que requieren **certificaciones formales** (ejemplo: software médico o aeronáutico).  
+1. Proyectos que requieren certificaciones formales (ejemplo: software médico o aeronáutico).  
 2. Sistemas que dependen mucho de hardware y donde rehacer pruebas es costoso.  
 
 **Diferencia clave:** cascada da más control y formalidad, pero a costa de tiempo; DevOps gana velocidad y flexibilidad, aunque exige disciplina y automatización.  
 
-**Tabla comparativa sencilla:**
+**Tabla comparativa:**
 
 | Aspecto      | Cascada                | DevOps                |
 |--------------|------------------------|-----------------------|
