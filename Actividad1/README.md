@@ -2,7 +2,7 @@
 
 **Estudiante:** Emhir Rodríguez 
 **Fecha:** 11/09/2025  
-**Tiempo total invertido:** 00:00  
+**Tiempo total invertido:** 06:00  
 
 ---
 
