@@ -32,3 +32,5 @@ Funciona cuando los requisitos son estables, pero el problema es que el feedback
 | Flexibilidad | Baja, rígida           | Alta, adaptable       |
 | Velocidad    | Lenta                  | Rápida                |
 | Riesgo       | Alto                   | Menor (fallos detectados antes) |
+
+![Comparativa DevOps vs Waterfall](imagenes/Devops-vs-waterfall.png)
