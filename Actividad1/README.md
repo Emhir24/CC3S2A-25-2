@@ -157,3 +157,47 @@ En la evidencia (`imagenes/dns-ttl.png`) se observa:
 El TTL de 60s indica que los clientes solo guardan la respuesta en caché por un minuto.  
 Esto permite reaccionar rápido a cambios (como un rollback de despliegue), pero aumenta la carga en servidores DNS.  
 Un TTL más largo sería útil para dominios muy estables, reduciendo tráfico de consultas.
+
+### 3. TLS – certificado digital
+
+Revisé el certificado digital de github.com desde el navegador.  
+
+![TLS CERT](imagenes/dns-ttl.png)
+
+
+En la evidencia (`imagenes/tls-cert.png`) se observa:
+
+- **CN (Common Name):** github.com  
+- **Emisor (CA):** Sectigo ECC Domain Validation Secure Server CA — Sectigo Limited  
+- **Vigencia:** del 4 de febrero de 2025 al 5 de febrero de 2026  
+
+**Interpretación:**  
+El certificado garantiza que la conexión es segura y que el navegador puede validar la cadena de confianza.  
+Si el certificado estuviera vencido o emitido por una CA no confiable, el navegador mostraría advertencias de “sitio no seguro”, lo que expone a riesgos de ataques **MITM (Man in the Middle)**.  
+Además, la validez temporal obliga a que los administradores renueven el certificado para mantener la disponibilidad y confianza del servicio.
+
+### 4. Puertos en ejecución
+Para verificar los servicios que están activos en mi máquina, utilicé el comando:
+
+```powershell
+netstat -ano | findstr LISTENING
+
+![Puertos](imagenes/ejecucion.png)
+
+En la evidencia (`imagenes/puertos-runtime.png`) se observa que hay varios puertos abiertos y en estado **LISTENING**:
+
+- **135 (RPC):** servicio de comunicación interno de Windows.  
+- **445 (SMB):** usado para compartir archivos y recursos en red.  
+- **5040:** asociado a servicios internos de Windows.  
+- **7070 / 7680:** corresponden a aplicaciones que se comunican con la red (ej. navegadores o aplicaciones multimedia).  
+- **49664 – 49669 (rango dinámico):** puertos efímeros que Windows abre de manera automática para conexiones temporales.  
+- **127.0.0.1:27060 y 49889–49895:** puertos locales que muestran procesos escuchando en la interfaz de loopback.  
+- **192.168.56.1:139:** servicio SMB activo en una interfaz de red virtual.
+
+**Interpretación:**  
+Que un puerto esté en **LISTENING** significa que el sistema está preparado para aceptar conexiones en ese servicio.  
+Algunos puertos (como 135 y 445) son necesarios para Windows, pero también son conocidos por ser vectores de ataque si no están bien protegidos.  
+Los puertos efímeros (`496xx`) cambian con el tiempo y corresponden a conexiones temporales.  
+Por eso es recomendable monitorear periódicamente qué puertos realmente se necesitan y cerrar los que no sean requeridos para reducir riesgos de seguridad.
+
+
