@@ -34,3 +34,20 @@ Funciona cuando los requisitos son estables, pero el problema es que el feedback
 | Riesgo       | Alto                   | Menor (fallos detectados antes) |
 
 ![Comparativa DevOps vs Waterfall](imagenes/Devops-vs-waterfall.png)
+
+## 4.2 Ciclo tradicional y silos
+En el enfoque clásico de desarrollo, lo normal era que el trabajo terminara en la fase de construcción y recién ahí pasara al área de operaciones.  
+Al no haber comunicación constante, cada grupo avanzaba por su cuenta como si estuvieran en silos, lo cual genera varios problemas.
+
+**Limitaciones que aparecen:**
+1. **Cambios grandes y poco controlados:** en lugar de probar pequeños ajustes, se entrega un bloque completo de código. Si algo falla, encontrar la causa se vuelve complicado y corregirlo es más caro.  
+2. **Acumulación de errores:** al no recibir retroalimentación inmediata, se van sumando defectos que después llegan todos juntos al final del ciclo.
+
+**Anti-patrones típicos:**
+**“Lanzar la pelota”:** los devs entregan el sistema y se desligan, esperando que operaciones lo ponga en marcha. Esto causa reprocesos y malentendidos porque el equipo que recibe no estuvo involucrado antes.  
+**Seguridad atrasada:** se revisa la seguridad como un trámite final. Esto retrasa la entrega y deja abierta la posibilidad de que vulnerabilidades pasen a producción.
+
+**Consecuencia directa:**  
+Este modelo crea muchos *handoffs* (pases entre equipos) con pérdida de información. El resultado son tiempos más largos para resolver incidentes (**MTTR**) y repeticiones de los mismos problemas en distintos despliegues.
+
+![Silos organizacionales](imagenes/silos-equipos.png)
