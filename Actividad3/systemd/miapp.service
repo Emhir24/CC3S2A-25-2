@@ -1,0 +1,16 @@
+[Unit]
+Description=Mi App 12-Factor (Flask)
+After=network-online.target
+
+[Service]
+Environment=PORT=8080
+Environment=MESSAGE=Hola
+Environment=RELEASE=v1
+WorkingDirectory=/home/user/Actividad3-CC3S2
+ExecStart=/home/user/Actividad3-CC3S2/.venv/bin/python app.py
+Restart=always
+RestartSec=2
+User=user
+
+[Install]
+WantedBy=multi-user.target
