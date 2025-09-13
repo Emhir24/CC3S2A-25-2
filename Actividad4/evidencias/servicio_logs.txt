@@ -1,0 +1,18 @@
+Sep 07 18:33:18 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 07 18:33:18 DESKTOP-UUIVQU9 systemd-logind[207]: New seat seat0.
+Sep 07 18:33:18 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 07 18:36:22 DESKTOP-UUIVQU9 systemd-logind[207]: New session 1 of user emhir.
+-- Boot 49dc63e8d13d4f5f8e619c0654fdd09c --
+Sep 12 18:20:40 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 12 18:20:41 DESKTOP-UUIVQU9 systemd-logind[196]: New seat seat0.
+Sep 12 18:20:41 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 12 18:20:43 DESKTOP-UUIVQU9 systemd-logind[196]: New session 1 of user emhir.
+-- Boot 04545072fc5e4149a93a6fa4854828c7 --
+Sep 13 12:12:51 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 13 12:12:52 DESKTOP-UUIVQU9 systemd-logind[200]: New seat seat0.
+Sep 13 12:12:52 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 13 12:12:54 DESKTOP-UUIVQU9 systemd-logind[200]: New session 1 of user emhir.
+Sep 13 12:21:48 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 13 12:21:46 DESKTOP-UUIVQU9 systemd-logind[166]: New seat seat0.
+Sep 13 12:21:46 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 13 12:21:48 DESKTOP-UUIVQU9 systemd-logind[166]: New session 4 of user emhir.

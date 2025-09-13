@@ -1,0 +1,22 @@
+● systemd-logind.service - User Login Management
+     Loaded: loaded (/usr/lib/systemd/system/systemd-logind.service; static)
+    Drop-In: /usr/lib/systemd/system/systemd-logind.service.d
+             └─dbus.conf
+     Active: active (running) since Sat 2025-09-13 12:21:46 -05; 2h 44min ago
+       Docs: man:sd-login(3)
+             man:systemd-logind.service(8)
+             man:logind.conf(5)
+             man:org.freedesktop.login1(5)
+   Main PID: 166 (systemd-logind)
+     Status: "Processing requests..."
+      Tasks: 1 (limit: 14153)
+   FD Store: 0 (limit: 512)
+     Memory: 1.7M (peak: 2.4M)
+        CPU: 231ms
+     CGroup: /system.slice/systemd-logind.service
+             └─166 /usr/lib/systemd/systemd-logind
+
+Sep 13 12:21:48 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 13 12:21:46 DESKTOP-UUIVQU9 systemd-logind[166]: New seat seat0.
+Sep 13 12:21:46 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 13 12:21:48 DESKTOP-UUIVQU9 systemd-logind[166]: New session 4 of user emhir.

@@ -1,5 +1,9 @@
 
 # Actividad 4 – Introducción a herramientas CLI en entornos Unix-like para DevSecOps
+
+## Sección 1: Manejo sólido de CLI
+En esta primera parte se practicaron los fundamentos del uso de la línea de comandos en entornos Unix-like, con énfasis en navegación, globbing, tuberías, redirecciones y `xargs`.
+
 ### 1. Navegación básica
 
 En esta parte se evidencia cómo moverse entre directorios y listar archivos.
@@ -15,7 +19,6 @@ pwd | tee -a "$ACT4/evidencias/pwd.txt"
 ```
 Evidencia: `globbing_archivos_txt.txt`
 
----
 ### 2. Globbing
 Se crean archivos de prueba y se utilizan patrones para listarlos.
 ```bash
@@ -63,3 +66,126 @@ find . -maxdepth 1 -name 'archivo*.txt' -print0 | xargs -0 echo rm -- \
 | tee "$ACT4/evidencias/xargs_dry_run.txt"
 ```
 Evidencias generadas:```bashxargs_dry_run.txt```
+
+## SECCIÓN 2: Administración Básica
+
+En esta sección se revisa la administración básica en Unix-like: usuarios, grupos, permisos y procesos.  
+Los comandos se ejecutaron en **Ubuntu WSL2** y las evidencias se guardaron en la carpeta `Actividad4/evidencias`.
+
+
+### 1. Usuarios, Grupos y Permisos
+
+Primero verificamos el usuario actual y sus grupos:
+
+```bash
+whoami
+id
+```
+Output registrado en evidencias:
+
+```bash
+whoami -> emhir
+id -> uid=1000(emhir) gid=1000(emhir) groups=1000(emhir),27(sudo),100(users) ...
+```
+Luego se creó un usuario nuevo llamado devsec y un grupo llamado ops, añadiendo al usuario al grupo:
+
+```bash
+sudo adduser devsec
+sudo addgroup ops
+sudo usermod -aG ops devsec
+```
+Durante el proceso de creación se pidió contraseña y confirmación de datos, los cuales quedaron registrados en el sistema.
+
+Se creó un archivo de prueba llamado secreto.txt, asignándole al usuario devsec y grupo ops como propietarios, con permisos 640 (lectura/escritura para dueño, lectura para grupo, sin acceso para otros):
+
+```bash
+touch evidencias/secreto.txt
+sudo chown devsec:ops evidencias/secreto.txt
+sudo chmod 640 evidencias/secreto.txt
+ls -l evidencias/secreto.txt
+```
+Output:
+```bash
+-rw-r----- 1 devsec ops 0 Sep 13 14:15 secreto.txt
+```
+Con esto se comprueba la correcta aplicación del principio de menor privilegio, permitiendo únicamente a los usuarios autorizados leer el archivo.
+
+### 2. Procesos y señales
+
+En esta sección se ejemplifica la gestión de procesos en segundo plano y cómo enviarles señales para terminarlos de manera controlada.  
+Se utilizó un proceso simple (`sleep`) para evitar riesgos en el sistema.
+
+1. **Crear un proceso en segundo plano**
+
+Con el siguiente comando se ejecuta `sleep 100` en background, lo que devuelve un identificador de proceso (PID):
+
+```bash
+sleep 100 &
+```
+2. **Listar procesos activos**
+
+Para verificar el proceso en ejecución, se utiliza ps aux | grep sleep, que muestra el PID y estado del proceso.
+La salida se guardó en el ```archivo procesos.txt.```
+```bash
+
+ps aux | grep sleep | tee "$ACT4/evidencias/procesos.txt"
+```
+3. **Consultar con jobs**
+
+El comando jobs -l permite visualizar los procesos en segundo plano asociados a la sesión actual.
+La salida inicial se guardó en ```jobs.txt.```
+```bash
+jobs -l | tee "$ACT4/evidencias/jobs.txt"
+```
+
+4. **Enviar señal para terminar el proceso**
+
+Se utilizó el comando kill con la señal SIGTERM para detener el proceso de manera segura.
+En este caso, el PID del proceso fue 581.
+```bash
+kill -SIGTERM 581
+```
+
+5. **Confirmar la finalización**
+
+Con jobs -l se verifica nuevamente el estado de los procesos.
+La salida se registró en ```jobs_after.txt```, donde se observa que el proceso ya no se encuentra en ejecución.
+```bash
+jobs -l | tee "$ACT4/evidencias/jobs_after.txt"
+```
+
+### 3.systemd (Logs y Servicios)
+
+En esta sección se revisa el manejo de servicios y registros del sistema con **systemd** y **journalctl**.
+
+1. **Estado de un servicio específico**
+Se inspeccionó el estado del servicio `systemd-logind` mostrando que está activo y corriendo en segundo plano.
+
+```bash
+systemctl status systemd-logind | tee "$ACT4/evidencias/servicio_status.txt"
+```
+Evidencia:
+
+![Estado de un servicio específico](imagenes/servicio_status.png)
+
+2. **Servicios activos**
+Se listaron todos los servicios actualmente en ejecución en el sistema:
+
+```bash
+systemctl list-units --type=service --state=running | tee "$ACT4/evidencias/servicios_activos.txt"
+```
+Evidencia:
+![](imagenes/servicios_activos.png)
+
+3. **Logs de errores recientes**
+Se consultaron los logs de sistema, filtrando solo errores (err y alert) desde el día de hoy:
+
+```bash
+journalctl -p err..alert --since "today" | tee "$ACT4/evidencias/errores_hoy.txt"
+```
+Evidencia:
+![](imagenes/errores_hoy.png)
+
+**Reflexión de la sección**
+El uso de systemd permite gestionar y monitorear servicios de forma centralizada, mientras que journalctl facilita la inspección de logs en tiempo real.
+De esta manera se puede garantizar el correcto funcionamiento de procesos críticos y detectar errores en el sistema de forma temprana.

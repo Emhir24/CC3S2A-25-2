@@ -1,0 +1,1 @@
+uid=1000(emhir) gid=1000(emhir) groups=1000(emhir),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
