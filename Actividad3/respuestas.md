@@ -55,7 +55,10 @@ curl -v http://127.0.0.1:8080
 Confirmamos que miapp.local apunta al localhost:
 
 cat /etc/hosts | grep miapp.local
+
 ![DNS hosts](imagenes/A3_03_dns.png)
+
+
 ![DNS resolución con hosts](imagenes/DNS%20resoluci%C3%B3n%20con%20hosts.png)
 
 ### 4. Prueba con método POST
@@ -90,8 +93,6 @@ openssl s_client -connect miapp.local:443 -servername miapp.local
 ![App en 8080](imagenes/Ver%20puertos%20abiertos%20%28app%20en%208080%29.png)
 ![Nginx 443 + Flask](imagenes/Puertos%20443%20y%208080%20%28Nginx%20%2B%20Flask%29.png)
 
-#### 9. Verificación TLS
-![TLS verificado](imagenes/Verificaci%C3%B3n%20TLS.png)
 ### Reflexión final
 
 Esta actividad permitió comprobar cómo DevOps y DevSecOps no son conceptos abstractos, sino prácticas tangibles:
