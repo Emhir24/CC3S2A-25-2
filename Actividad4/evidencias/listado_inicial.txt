@@ -1,0 +1,6 @@
+total 0
+drwxrwxrwx 1 emhir emhir 4096 Sep 13 12:30 .
+drwxrwxrwx 1 emhir emhir 4096 Sep 13 12:15 ..
+-rwxrwxrwx 1 emhir emhir    0 Sep 13 12:31 README.md
+drwxrwxrwx 1 emhir emhir 4096 Sep 13  2025 evidencias
+drwxrwxrwx 1 emhir emhir 4096 Sep 13 12:15 imagenes

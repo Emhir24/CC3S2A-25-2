@@ -1,0 +1,1 @@
+rm -- ./archivo1.txt ./archivo2.txt
