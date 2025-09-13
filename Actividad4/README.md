@@ -189,3 +189,92 @@ Evidencia:
 **Reflexión de la sección**
 El uso de systemd permite gestionar y monitorear servicios de forma centralizada, mientras que journalctl facilita la inspección de logs en tiempo real.
 De esta manera se puede garantizar el correcto funcionamiento de procesos críticos y detectar errores en el sistema de forma temprana.
+
+## SECCIÓN 3: Utilidades de texto de Unix
+
+En esta sección se analiza y estudia el uso de utilidades clásicas de Unix para el procesamiento de texto, fundamentales en el enfoque de **DevSecOps** ya que permiten auditar logs, transformar datos y automatizar búsquedas de información sensible.
+
+### 1. Uso de `grep` para buscar patrones de archivo
+
+```bash
+grep root /etc/passwd | tee evidencias/grep_root.txt
+```
+Este comando realiza una búsqueda de la palabra root en el archivo ```/etc/passwd```, el cual contiene la lista de usuarios del sistema.
+El objetivo es localizar rápidamente las entradas relacionadas con el usuario administrador.
+
+2. **Uso de sed para sustitución de datos**
+```bash
+printf "linea1: dato1\nlinea2: dato2\n" > evidencias/datos.txt
+sed 's/dato1/secreto/' evidencias/datos.txt | tee evidencias/nuevo.txt
+```
+Con ```sed``` se reemplaza la primera ocurrencia de dato1 por secreto en cada línea.
+El resultado modificado se guarda en ```nuevo.txt.```
+
+3. **Uso de awk y cut**
+```bash
+awk -F: '{print $1}' /etc/passwd | sort | uniq | tee evidencias/usuarios_awk.txt
+cut -d: -f1 /etc/passwd | sort | uniq | tee evidencias/usuarios_cut.txt
+```
+Ambos comandos extraen la primera columna del archivo ```/etc/passwd```.
+
+```awk``` permite mayor flexibilidad para procesar campos.
+
+```cut``` es más rápido y sencillo para separar por delimitadores.
+
+4. **Uso de sort y uniq**
+```bash
+cat evidencias/*.txt | sort | uniq | tee evidencias/sort_uniq.txt
+```
+Aquí se concatenan varios archivos .txt, se ordenan con sort y se eliminan duplicados con uniq.
+
+5. **Uso de tr y tee**
+```bash
+printf "hola\n" | tr 'a-z' 'A-Z' | tee evidencias/mayus.txt
+```
+El comando ```tr``` convierte caracteres en minúscula a mayúscula, mientras que tee permite guardar el resultado en ```mayus.txt``` y mostrarlo en pantalla al mismo tiempo.
+
+6. **Uso de find para búsqueda de ficheros**
+```bash
+find /tmp -mtime -5 -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort | tee evidencias/find_tmp.txt
+```
+
+Busca en ```/tmp``` archivos modificados en los últimos 5 días, mostrando fecha, hora y ruta completa.
+Esto es útil para auditorías rápidas de cambios recientes.
+
+***EJERCICIOS DE REFORZAMIENTO***
+
+A continuación, se ejecutan varios ejercicios que integran los comandos de esta sección:
+
+```bash
+# Buscar ocurrencias de root en /etc/passwd
+grep root /etc/passwd
+
+# Sustitución con sed
+sed 's/dato1/secreto/' evidencias/datos.txt > evidencias/nuevo.txt
+
+# Extracción de usuarios con awk y cut
+awk -F: '{print $1}' /etc/passwd | sort | uniq
+cut -d: -f1 /etc/passwd | sort | uniq
+
+# Conversión de texto a mayúsculas con tr y tee
+printf "hola\n" | tr 'a-z' 'A-Z' | tee evidencias/mayus.txt
+
+# Conteo de archivos que contengan "conf" en /etc
+ls /etc | grep conf | sort | tee evidencias/lista_conf.txt | wc -l
+
+# Detección de errores en sesiones capturadas
+grep -Ei 'error|fail' evidencias/sesion.txt | tee evidencias/hallazgos.txt
+```
+***Explicación rápida de los ejercicios:***
+
+```grep root /etc/passwd``` → Busca las líneas que contienen la palabra root.
+
+```sed 's/dato1/secreto/' datos.txt``` → Reemplaza dato1 por secreto y guarda el resultado.
+
+```awk / cut ```→ Extraen los nombres de usuario del sistema eliminando duplicados.
+
+```tr``` → Convierte la palabra hola en mayúsculas.
+
+```s /etc | grep conf ```→ Filtra archivos de configuración en /etc y los guarda en lista_conf.txt.
+
+```grep -Ei 'error|fail' ```evidencias/sesion.txt → Busca líneas con error o fail, útil para auditoría de logs.

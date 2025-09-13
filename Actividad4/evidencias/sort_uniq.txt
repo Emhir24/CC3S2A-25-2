@@ -1,0 +1,306 @@
+
+             man:logind.conf(5)
+             man:org.freedesktop.login1(5)
+             man:systemd-logind.service(8)
+             └─166 /usr/lib/systemd/systemd-logind
+             └─dbus.conf
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        CPU: 231ms
+        SUB    → The low-level unit activation state, values depend on unit type.
+       Docs: man:sd-login(3)
+      Tasks: 1 (limit: 14153)
+     1	archivo1.txt
+     2	archivo2.txt
+     3	archivo3.doc
+     4	Hola
+     Active: active (running) since Sat 2025-09-13 12:21:46 -05; 2h 44min ago
+     CGroup: /system.slice/systemd-logind.service
+     Loaded: loaded (/usr/lib/systemd/system/systemd-logind.service; static)
+     Memory: 1.7M (peak: 2.4M)
+     Status: "Processing requests..."
+    Drop-In: /usr/lib/systemd/system/systemd-logind.service.d
+   FD Store: 0 (limit: 512)
+   Main PID: 166 (systemd-logind)
+  UNIT                        LOAD   ACTIVE SUB     DESCRIPTION
+  console-getty.service       loaded active running Console Getty
+  cron.service                loaded active running Regular background program processing daemon
+  dbus.service                loaded active running D-Bus System Message Bus
+  getty@tty1.service          loaded active running Getty on tty1
+  nginx.service               loaded active running A high performance web server and a reverse proxy server
+  rsyslog.service             loaded active running System Logging Service
+  systemd-journald.service    loaded active running Journal Service
+  systemd-logind.service      loaded active running User Login Management
+  systemd-resolved.service    loaded active running Network Name Resolution
+  systemd-timesyncd.service   loaded active running Network Time Synchronization
+  systemd-udevd.service       loaded active running Rule-based Manager for Device Events and Files
+  unattended-upgrades.service loaded active running Unattended Upgrades Shutdown
+  user@1000.service           loaded active running User Manager for UID 1000
+  wsl-pro.service             loaded active running Bridge to Ubuntu Pro agent on Windows
+-- Boot 04545072fc5e4149a93a6fa4854828c7 --
+-- Boot 49dc63e8d13d4f5f8e619c0654fdd09c --
+-rwxrwxrwx 1 emhir emhir    0 Sep 13 12:31 README.md
+-rwxrwxrwx 1 emhir emhir 0 Sep 13 14:15 /mnt/c/Users/User/Desktop/CC3S2A-25-2/Actividad4/evidencias/secreto.txt
+.
+..
+.pwd.lock
+.resolv.conf.systemd-resolved.bak
+.updated
+/mnt/c/Users/User/Desktop/CC3S2A-25-2/Actividad4
+/tmp
+14 loaded units listed.
+3
+4
+Hola
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+PackageKit
+Sep 07 18:33:18 DESKTOP-UUIVQU9 systemd-logind[207]: New seat seat0.
+Sep 07 18:33:18 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 07 18:33:18 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 07 18:36:22 DESKTOP-UUIVQU9 systemd-logind[207]: New session 1 of user emhir.
+Sep 12 18:20:40 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 12 18:20:41 DESKTOP-UUIVQU9 systemd-logind[196]: New seat seat0.
+Sep 12 18:20:41 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 12 18:20:43 DESKTOP-UUIVQU9 systemd-logind[196]: New session 1 of user emhir.
+Sep 13 12:12:51 DESKTOP-UUIVQU9 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -2
+Sep 13 12:12:51 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 13 12:12:52 DESKTOP-UUIVQU9 kernel: PCI: Fatal: No config space access function found
+Sep 13 12:12:52 DESKTOP-UUIVQU9 kernel: misc dxg: dxgk: dxgkio_is_feature_enabled: Ioctl failed: -22
+Sep 13 12:12:52 DESKTOP-UUIVQU9 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -2
+Sep 13 12:12:52 DESKTOP-UUIVQU9 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 13 12:12:52 DESKTOP-UUIVQU9 systemd-logind[200]: New seat seat0.
+Sep 13 12:12:52 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 13 12:12:53 DESKTOP-UUIVQU9 login[390]: PAM adding faulty module: pam_lastlog.so
+Sep 13 12:12:53 DESKTOP-UUIVQU9 login[390]: PAM unable to dlopen(pam_lastlog.so): /usr/lib/security/pam_lastlog.so: cannot open shared object file: No such file or directory
+Sep 13 12:12:54 DESKTOP-UUIVQU9 systemd-logind[200]: New session 1 of user emhir.
+Sep 13 12:13:37 DESKTOP-UUIVQU9 unknown: WSL (274) ERROR: CheckConnection: getaddrinfo() failed: -5
+Sep 13 12:21:46 DESKTOP-UUIVQU9 systemd-logind[166]: New seat seat0.
+Sep 13 12:21:46 DESKTOP-UUIVQU9 systemd[1]: Started systemd-logind.service - User Login Management.
+Sep 13 12:21:47 DESKTOP-UUIVQU9 kernel: PCI: Fatal: No config space access function found
+Sep 13 12:21:47 DESKTOP-UUIVQU9 kernel: misc dxg: dxgk: dxgkio_is_feature_enabled: Ioctl failed: -22
+Sep 13 12:21:47 DESKTOP-UUIVQU9 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -2
+Sep 13 12:21:47 DESKTOP-UUIVQU9 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 13 12:21:47 DESKTOP-UUIVQU9 unknown: WSL (274) ERROR: CheckConnection: getaddrinfo() failed: -5
+Sep 13 12:21:48 DESKTOP-UUIVQU9 login[302]: PAM adding faulty module: pam_lastlog.so
+Sep 13 12:21:48 DESKTOP-UUIVQU9 login[302]: PAM unable to dlopen(pam_lastlog.so): /usr/lib/security/pam_lastlog.so: cannot open shared object file: No such file or directory
+Sep 13 12:21:48 DESKTOP-UUIVQU9 systemd-logind[166]: New session 4 of user emhir.
+Sep 13 12:21:48 DESKTOP-UUIVQU9 systemd[1]: Starting systemd-logind.service - User Login Management...
+Sep 13 13:41:31 DESKTOP-UUIVQU9 unknown: WSL (274) ERROR: CheckConnection: getaddrinfo() failed: -3
+Sep 13 13:42:14 DESKTOP-UUIVQU9 unknown: WSL (274) ERROR: CheckConnection: getaddrinfo() failed: -5
+X11
+[1]+   581 Running                 sleep 100 &
+_apt
+adduser.conf
+alternatives
+apache2
+apparmor
+apparmor.d
+apport
+apt
+archivo1.txt
+archivo2.txt
+archivo3.doc
+backup
+bash.bashrc
+bash_completion
+bash_completion.d
+bin
+bindresvport.blacklist
+binfmt.d
+byobu
+ca-certificates
+ca-certificates.conf
+cloud
+console-setup
+credstore
+credstore.encrypted
+cron.d
+cron.daily
+cron.hourly
+cron.monthly
+cron.weekly
+cron.yearly
+crontab
+daemon
+dbus-1
+dconf
+debconf.conf
+debian_version
+default
+deluser.conf
+depmod.d
+devsec
+dhcp
+dhcpcd
+dhcpcd.conf
+dpkg
+drwxrwxrwx 1 emhir emhir 4096 Sep 13  2025 evidencias
+drwxrwxrwx 1 emhir emhir 4096 Sep 13 12:15 ..
+drwxrwxrwx 1 emhir emhir 4096 Sep 13 12:15 imagenes
+drwxrwxrwx 1 emhir emhir 4096 Sep 13 12:30 .
+e2scrub.conf
+emhir
+emhir        581  0.0  0.0   3124  1664 pts/0    S    14:29   0:00 sleep 100
+emhir        583  0.0  0.0   4088  1920 pts/0    S+   14:29   0:00 grep --color=auto sleep
+environment
+environment.d
+ethertypes
+fonts
+fstab
+fuse.conf
+gai.conf
+games
+glvnd
+gnutls
+gprofng.rc
+groff
+group
+group-
+gshadow
+gshadow-
+gss
+gtk-3.0
+host.conf
+hostname
+hosts
+init.d
+inputrc
+iproute2
+irc
+issue
+issue.net
+kernel
+landscape
+ld.so.cache
+ld.so.conf
+ld.so.conf.d
+ldap
+legal
+libaudit.conf
+lighttpd
+linea1: dato1
+linea1: secreto
+linea2: dato2
+list
+locale.alias
+locale.conf
+locale.gen
+localtime
+logcheck
+login.defs
+logrotate.conf
+logrotate.d
+lp
+ls: cannot access 'noexiste': No such file or directory
+lsb-release
+machine-id
+magic
+magic.mime
+mail
+man
+manpath.config
+messagebus
+mime.types
+mke2fs.conf
+modprobe.d
+modules
+modules-load.d
+mtab
+nanorc
+netconfig
+netplan
+network
+networkd-dispatcher
+networks
+news
+newt
+nginx
+nobody
+nsswitch.conf
+opt
+os-release
+pam.conf
+pam.d
+passwd
+passwd-
+perl
+pm
+polkit-1
+polkitd
+profile
+profile.d
+protocols
+proxy
+python3
+python3.12
+rc0.d
+rc1.d
+rc2.d
+rc3.d
+rc4.d
+rc5.d
+rc6.d
+rcS.d
+resolv.conf
+rm -- ./archivo1.txt ./archivo2.txt
+rmt
+root
+root:x:0:0:root:/root:/bin/bash
+rpc
+rsyslog.conf
+rsyslog.d
+security
+selinux
+sensors.d
+sensors3.conf
+services
+sgml
+shadow
+shadow-
+shells
+skel
+ssh
+ssl
+subgid
+subgid-
+subuid
+subuid-
+sudo.conf
+sudo_logsrvd.conf
+sudoers
+sudoers.d
+supercat
+sync
+sys
+sysctl.conf
+sysctl.d
+syslog
+systemd
+systemd-network
+systemd-resolve
+systemd-timesync
+terminfo
+timezone
+tmpfiles.d
+total 0
+ubuntu-advantage
+ucf.conf
+udev
+ufw
+uid=1000(emhir) gid=1000(emhir) groups=1000(emhir),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
+update-manager
+update-motd.d
+uucp
+uuidd
+vconsole.conf
+vim
+vtrgb
+vulkan
+wgetrc
+wsl-distribution.conf
+wsl.conf
+www-data
+xattr.conf
+xdg
+xml
+zsh_command_not_found
+● systemd-logind.service - User Login Management
