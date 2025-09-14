@@ -1,0 +1,2 @@
+* feature/advanced-feature c33c3ea Resuelve el conflicto de fusión entre main y feature/advanced-feature
+  master                   e0718b1 Agrega main.py

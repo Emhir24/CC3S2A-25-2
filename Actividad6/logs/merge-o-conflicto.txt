@@ -1,0 +1,13 @@
+== Intento de merge: main <- feature/advanced-feature ==
+Already up to date.
+
+== Estado tras conflicto (si lo hay) ==
+On branch feature/advanced-feature
+nothing to commit, working tree clean
+
+== Contenido con marcadores (main.py) ==
+print('Hello World-actualizado en main')
+
+== Resolución manual ==
+[feature/advanced-feature c33c3ea] Resuelve el conflicto de fusión entre main y feature/advanced-feature
+ 1 file changed, 4 insertions(+)

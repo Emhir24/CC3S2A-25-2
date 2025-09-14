@@ -1,0 +1,9 @@
+[master (root-commit) 8c3c1ca] Commit inicial con README.md
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+[master 104dabf] Configura la documentación base del repositorio
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 CONTRIBUTING.md
+[master e0718b1] Agrega main.py
+ 1 file changed, 1 insertion(+)
+ create mode 100644 main.py

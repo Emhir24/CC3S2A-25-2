@@ -1,0 +1,3 @@
+e0718b1 Agrega main.py
+104dabf Configura la documentación base del repositorio
+8c3c1ca Commit inicial con README.md
