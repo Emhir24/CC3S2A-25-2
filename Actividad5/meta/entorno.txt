@@ -1,0 +1,17 @@
+SO:
+Linux DESKTOP-UUIVQU9 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+make:
+GNU Make 4.3
+
+bash:
+GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)
+
+python:
+Python 3.12.3
+
+tar:
+tar (GNU tar) 1.35
+
+sha256sum:
+sha256sum (GNU coreutils) 9.4
