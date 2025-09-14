@@ -103,8 +103,6 @@ Aíslan el trabajo, facilitan PRs/revisiones y evitan romper `main`; luego se in
 - `logs/branches.txt`: `git branch -vv`  
 - `logs/merge-o-conflicto.txt`: intento de `git merge`, `git status`, vista de `main.py` con marcadores y commit de resolución
 
-
-
 ## Conclusiones
 1. **Git config** permite identificar al autor de cada commit y mantener trazabilidad.
 2. **Init, add y commit** son la base del control de versiones: inicializar, preparar y confirmar cambios.
@@ -113,7 +111,7 @@ Aíslan el trabajo, facilitan PRs/revisiones y evitan romper `main`; luego se in
 5. La práctica con remoto (GitHub) y PR demuestra cómo Git soporta un flujo colaborativo real.
 
 En resumen, Git garantiza un historial claro, control sobre los cambios, y flexibilidad para colaborar en equipo de manera organizada.
-
+ 
 
 
 s
